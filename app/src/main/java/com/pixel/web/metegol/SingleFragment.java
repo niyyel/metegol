@@ -1,7 +1,6 @@
-package com.example.usuario.metegol;
+package com.pixel.web.metegol;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

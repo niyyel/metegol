@@ -1,7 +1,6 @@
-package com.example.usuario.metegol;
+package com.pixel.web.metegol;
 
 import android.content.Context;
-import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

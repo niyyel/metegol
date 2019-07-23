@@ -1,9 +1,10 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.example.usuario.metegol"
+        applicationId "com.pixel.web.metegol"
         minSdkVersion 15
         targetSdkVersion 28
         versionCode 1
@@ -29,11 +30,19 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     implementation 'com.android.support:support-v4:28.0.0'
     implementation 'com.google.android.gms:play-services-maps:16.1.0'
+    implementation 'com.android.support:support-annotations:28.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'com.mcxiaoke.volley:library:1.0.+'
     implementation 'com.google.maps.android:android-maps-utils:0.5+'
+    api 'com.facebook.android:facebook-android-sdk:[4,5)'
 
 
+    implementation 'com.google.firebase:firebase-messaging:17.3.4'
+    implementation 'com.google.firebase:firebase-core:16.0.6'
+    implementation 'com.google.firebase:firebase-auth:16.2.1'
+    implementation 'com.google.firebase:firebase-firestore:17.0.2'
+    api 'com.google.android.gms:play-services-ads:11.2.2'
+    api 'com.google.android.gms:play-services-base:11.2.2'
 }

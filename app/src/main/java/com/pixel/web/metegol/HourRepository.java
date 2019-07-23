@@ -1,9 +1,6 @@
-package com.example.usuario.metegol;
+package com.pixel.web.metegol;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 public class HourRepository {
     private static HourRepository repository = new HourRepository();
@@ -18,12 +15,12 @@ public class HourRepository {
 
         lstPartido.add(new PartidoModelo("8:00","08:30", "RESERVADO", R.drawable.reservado));
         lstPartido.add(new PartidoModelo("8:30","09:00", "RESERVADO", R.drawable.reservado));
-        lstPartido.add(new PartidoModelo("9:00","09:30", "RESERVADO", R.drawable.reservado));
-        lstPartido.add(new PartidoModelo("9:30","10:00", "RESERVADO", R.drawable.reservado));
-        lstPartido.add(new PartidoModelo("10:00","10:30", "RESERVADO", R.drawable.reservado));
-        lstPartido.add(new PartidoModelo("10:30","11:00", "RESERVADO", R.drawable.reservado));
-        lstPartido.add(new PartidoModelo("11:00","11:30", "RESERVADO", R.drawable.reservado));
-        lstPartido.add(new PartidoModelo("11:30","12:00", "RESERVADO", R.drawable.reservado));
+        lstPartido.add(new PartidoModelo("9:00","09:30", "DISPONIBLE", R.drawable.reservado));
+        lstPartido.add(new PartidoModelo("9:30","10:00", "DISPONIBLE", R.drawable.reservado));
+        lstPartido.add(new PartidoModelo("10:00","10:30", "DISPONIBLE", R.drawable.reservado));
+        lstPartido.add(new PartidoModelo("10:30","11:00", "DISPONIBLE", R.drawable.reservado));
+        lstPartido.add(new PartidoModelo("11:00","11:30", "DISPONIBLE", R.drawable.reservado));
+        lstPartido.add(new PartidoModelo("11:30","12:00", "DISPONIBLE", R.drawable.reservado));
         lstPartido.add(new PartidoModelo("12:00","12:30", "RESERVADO", R.drawable.reservado));
         lstPartido.add(new PartidoModelo("12:30","13:00", "RESERVADO", R.drawable.reservado));
         lstPartido.add(new PartidoModelo("13:00","13:30", "RESERVADO", R.drawable.reservado));

@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Partido">
+
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+
+
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -17,7 +28,8 @@
             android:id="@+id/list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="104dp"
+            android:layout_marginBottom="70dp"
             android:layout_weight="1"
             android:orientation="vertical">
 
@@ -26,8 +38,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp" />
+                android:layout_marginRight="10dp">
+
+            </ListView>
+
         </LinearLayout>
+
+        <Button
+            android:id="@+id/buttonReserva"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="250dp"
+            android:layout_marginTop="585dp"
+            android:background="@drawable/button_background"
+            android:text="Reservar"
+            android:textColor="#f1eaea" />
+
+
     </android.support.v7.widget.CardView>
 
 </LinearLayout>
+</FrameLayout>

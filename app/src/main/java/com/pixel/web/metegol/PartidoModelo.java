@@ -1,7 +1,8 @@
-package com.example.usuario.metegol;
+package com.pixel.web.metegol;
 
 public class PartidoModelo {
     private String hour_input, hour_output, state;
+    private boolean state_now=false;
     private int photoState;
 
     public PartidoModelo() {
@@ -12,6 +13,13 @@ public class PartidoModelo {
         this.hour_output = hour_output;
         this.state = state;
         this.photoState = photoState;
+    }
+    public boolean get_State_now() {
+        return state_now;
+    }
+
+    public void setState_now(boolean state_now) {
+        this.state_now = state_now;
     }
 
     public String getHour_input() {

@@ -1,4 +1,4 @@
-package com.example.usuario.metegol;
+package com.pixel.web.metegol;
 
 import org.junit.Test;
 
