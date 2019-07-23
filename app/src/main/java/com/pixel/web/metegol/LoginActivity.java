@@ -154,9 +154,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                     //esta logeado
                     //Toast.makeText(getApplicationContext(), "CORRECTO Y LOGEADO",Toast.LENGTH_LONG).show();
                     Intent miintent= new Intent(getApplicationContext(),MainActivity.class);
-                   // miintent.putExtra(FirebaseAuth,firebaseAuth);
-
-                    //  miintent.putExtra("nombres",nombresx);
+                    miintent.putExtra("correo",user.getEmail());
                     startActivity(miintent);
                     finish();
                 }
@@ -181,13 +179,15 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
     private void addUserFire(String email,String password){
         //registramos un nuevo usuario
-
         firebaseAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         //checking if success
                         if (task.isSuccessful()) {
+                            //registramos
+                            addUser(name_text.getText().toString().trim(), mail_text.getText().toString().trim(),
+                                    password_text.getText().toString().trim(), cellphone_text.getText().toString().trim());
 
                             Toast.makeText(LoginActivity.this, "Se ha registrado el usuario con el email: " , Toast.LENGTH_LONG).show();
                         } else {
@@ -195,7 +195,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                                 Toast.makeText(LoginActivity.this, "Ese usuario ya existe ", Toast.LENGTH_SHORT).show();
                             } else {
                                 Toast.makeText(LoginActivity.this, "No se pudo registrar el usuario "+task.getException().getMessage().toString(), Toast.LENGTH_LONG).show();
-                              Log.e("error",""+task.getException().getMessage().toString());
+                              //Log.e("error",""+task.getException().getMessage().toString());
                             }
                         }
                       //  progressDialog.dismiss();
@@ -335,9 +335,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             public void onClick(View view) {
                 if(register_user()){
                     addUserFire( mail_text.getText().toString().trim(),password_text.getText().toString().trim());
-                    //registramos
-                    addUser(name_text.getText().toString().trim(), mail_text.getText().toString().trim(),
-                            password_text.getText().toString().trim(), cellphone_text.getText().toString().trim());
                     alertDialog.cancel();
                 }
             }

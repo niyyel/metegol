@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "670862970753",
+    "firebase_url": "https://metegol-42b21.firebaseio.com",
+    "project_id": "metegol-42b21",
+    "storage_bucket": "metegol-42b21.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:670862970753:android:8f875b25ea4b252b",
+        "android_client_info": {
+          "package_name": "com.pixel.web.metegol"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "670862970753-6slmkp4usoa8s1q7na6kj3uvfc3odd0j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pixel.web.metegol",
+            "certificate_hash": "f6d439c7093ba62934ed78893b2e9003a296e690"
+          }
+        },
+        {
+          "client_id": "670862970753-to7nk6ql4elha44j7skdhb47n95idhll.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkfVLL498NkUqZGqcnG2XANtuLpf2eYb4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "670862970753-to7nk6ql4elha44j7skdhb47n95idhll.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
