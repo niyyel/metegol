@@ -1,12 +1,17 @@
 package com.pixel.web.metegol;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.design.widget.NavigationView;
@@ -31,6 +36,7 @@ import com.google.firebase.iid.InstanceIdResult;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private final int REQUEST_CODE_ASK_PERMISSIONS_SEND = 1000;
+    LocationManager locationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +79,8 @@ public class MainActivity extends AppCompatActivity
         navUsername.setText(coreox);
 
         checkPermission();
+        locationManager = (LocationManager) getApplicationContext().getSystemService(Context.LOCATION_SERVICE);
+        checkLocation();
         //para iniciar por defecto las rutas
         onNavigationItemSelected(navigationView.getMenu().getItem(0));
         navigationView.getMenu().getItem(0).setChecked(true);
@@ -99,6 +107,34 @@ public class MainActivity extends AppCompatActivity
                 });
       //  Log.d("Instance ID",FirebaseInstanceId.getInstance().getId());
 
+    }
+    private boolean checkLocation() {
+        if (!isLocationEnabled())
+            showAlert();
+        return isLocationEnabled();
+    }
+    private void showAlert() {
+        final AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+        dialog.setTitle("Active Ubicación")
+                .setMessage("Su ubicación esta desactivada.\npor favor active su ubicación " +
+                        "para mejor uso de la aplicación")
+                .setPositiveButton("Configuración de ubicación", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface paramDialogInterface, int paramInt) {
+                        Intent myIntent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                        startActivity(myIntent);
+                    }
+                })
+                .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface paramDialogInterface, int paramInt) {
+                    }
+                });
+        dialog.show();
+    }
+    private boolean isLocationEnabled() {
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) ||
+                locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
     }
 
     @Override
@@ -142,9 +178,12 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
             // Handle the camera action
+            getSupportActionBar().setTitle("Metegol - Reservar");
             fragmentManager.beginTransaction().replace(R.id.contenedor,new Home()).commit();
         } else if (id == R.id.nav_gallery) {
-            fragmentManager.beginTransaction().replace(R.id.contenedor,new Home()).commit();
+            //reservas
+            getSupportActionBar().setTitle("Mis Reservas");
+            fragmentManager.beginTransaction().replace(R.id.contenedor,new MyReservationFragment()).commit();
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_exit) {

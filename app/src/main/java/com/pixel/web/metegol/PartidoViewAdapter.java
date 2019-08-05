@@ -9,15 +9,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.pixel.web.metegol.model.PartidoClass;
+
 import java.util.List;
 
 
 public class PartidoViewAdapter extends RecyclerView.Adapter<PartidoViewAdapter.MyViewHolder> {
 
     Context mContext;
-    List<PartidoModelo> mData;
+    List<PartidoClass> mData;
 
-    public PartidoViewAdapter(Context mContext, List<PartidoModelo> mData) {
+    public PartidoViewAdapter(Context mContext, List<PartidoClass> mData) {
         this.mContext = mContext;
         this.mData = mData;
     }

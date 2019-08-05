@@ -11,21 +11,21 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.pixel.web.metegol.PartidoModelo;
+import com.pixel.web.metegol.model.PartidoClass;
 import com.pixel.web.metegol.R;
 
 import java.util.List;
 
-import static com.pixel.web.metegol.Partido.pos;
+import static com.pixel.web.metegol.PartidoFragment.pos;
 
-public class ListHourAdapter extends ArrayAdapter<PartidoModelo> {
+public class ListHourAdapter extends ArrayAdapter<PartidoClass> {
 
     Context myContext;
-    List<PartidoModelo> DataList;
+    List<PartidoClass> DataList;
     private SparseBooleanArray mSelectedItemsIds;
     // Constructor for get Context and  list
 
-    public  ListHourAdapter(Context context, int resourceId,  List<PartidoModelo> lists) {
+    public  ListHourAdapter(Context context, int resourceId,  List<PartidoClass> lists) {
 
         super(context,  resourceId, lists);
         //super(context,0, objects);
@@ -57,7 +57,7 @@ public class ListHourAdapter extends ArrayAdapter<PartidoModelo> {
         TextView hour_output = (TextView) convertView.findViewById(R.id.txtHourOutput);
         TextView state = (TextView) convertView.findViewById(R.id.txtState);
         // Lead actual.
-        PartidoModelo miclass = getItem(position);
+        PartidoClass miclass = getItem(position);
         hour_input.setText(miclass.getHour_input());
         hour_output.setText(miclass.getHour_output());
         state.setText(miclass.getState());
@@ -83,22 +83,18 @@ public class ListHourAdapter extends ArrayAdapter<PartidoModelo> {
                 hour_output.setTextColor(Color.WHITE);
             }
         }
-
-
-
-
         return convertView;
     }
 
     @Override
-    public void remove(PartidoModelo  object) {
+    public void remove(PartidoClass object) {
         DataList.remove(object);
         notifyDataSetChanged();
     }
 
     // get List after update or delete
 
-    public  List<PartidoModelo> getMyList() {
+    public  List<PartidoClass> getMyList() {
         return DataList;
     }
 

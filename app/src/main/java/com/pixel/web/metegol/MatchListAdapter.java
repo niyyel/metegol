@@ -10,10 +10,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.pixel.web.metegol.model.PartidoClass;
+
 import java.util.List;
 
-public class MatchListAdapter extends ArrayAdapter<PartidoModelo> {
-    public MatchListAdapter(@NonNull Context context, List<PartidoModelo> objects) {
+public class MatchListAdapter extends ArrayAdapter<PartidoClass> {
+    public MatchListAdapter(@NonNull Context context, List<PartidoClass> objects) {
         super(context,0, objects);
     }
 
@@ -40,7 +42,7 @@ public class MatchListAdapter extends ArrayAdapter<PartidoModelo> {
 
 
         // Lead actual.
-        PartidoModelo miclass = getItem(position);
+        PartidoClass miclass = getItem(position);
 
         // Setup.
         //  Glide.with(getContext()).load(miclass.getImagenRoute()).into(avatar);

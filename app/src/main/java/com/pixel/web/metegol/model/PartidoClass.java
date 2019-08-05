@@ -1,19 +1,31 @@
-package com.pixel.web.metegol;
+package com.pixel.web.metegol.model;
 
-public class PartidoModelo {
+public class PartidoClass {
     private String hour_input, hour_output, state;
     private boolean state_now=false;
     private int photoState;
+    private int id=0;
 
-    public PartidoModelo() {
+    public PartidoClass() {
     }
 
-    public PartidoModelo(String hour_input, String hour_output, String state,int photoState) {
+    public PartidoClass(int id,String hour_input, String hour_output, String state, int photoState) {
         this.hour_input = hour_input;
         this.hour_output = hour_output;
         this.state = state;
         this.photoState = photoState;
+        this.id = id;
     }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public boolean get_State_now() {
         return state_now;
     }

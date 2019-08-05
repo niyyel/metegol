@@ -105,7 +105,7 @@ public class Mapa extends Fragment implements OnMapReadyCallback{
 
                     LatLng miPosicion = new LatLng(latitudOrigen,longitudOrigen);
 
-                    mGoogleMap.addMarker(new MarkerOptions().position(miPosicion));
+                    mGoogleMap.addMarker(new MarkerOptions().position(miPosicion)).setTitle("Yo");
 
                     CameraPosition cameraPosition=new CameraPosition.Builder()
                             .target(new LatLng(latitudOrigen,longitudOrigen))

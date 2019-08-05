@@ -55,7 +55,7 @@ public class Home extends Fragment {
         public Fragment getItem(int position) {
             switch (position){
                 case 0: return new Mapa();
-                case 1: return new Partido();
+                case 1: return new PartidoFragment();
                 case 2: return new Contactos();
             }
             return null;
