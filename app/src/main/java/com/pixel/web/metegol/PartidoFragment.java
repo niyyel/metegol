@@ -100,7 +100,6 @@ public class PartidoFragment extends Fragment {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                           //  Toast.makeText(getActivity().getApplicationContext(),"No realizó ninguna acción",Toast.LENGTH_SHORT).show();
-
                         }
                     });
                     alert.show();
