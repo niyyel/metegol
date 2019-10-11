@@ -32,6 +32,8 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -104,7 +106,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login_card_overlap);
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -133,7 +135,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             }
         });
 
-        Button register_new_button = (Button) findViewById(R.id.new_user_button);
+        TextView register_new_button = (TextView) findViewById(R.id.new_user_button);
         register_new_button.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -247,20 +249,30 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     //PARA EL DIALOGO
     public void register_user_dialog(){
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        View viewx  = this.getLayoutInflater().inflate(R.layout.register_user_form, null);
-         final AlertDialog alertDialog;
+        final Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); // before
+        dialog.setContentView(R.layout.activity_form_sign_up);
+        dialog.setCancelable(true);
+
+        WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
+        lp.copyFrom(dialog.getWindow().getAttributes());
+        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+        /**AlertDialog.Builder builder = new AlertDialog.Builder(this);**/
+        View viewx  = this.getLayoutInflater().inflate(R.layout.activity_form_sign_up, null);
+        /** final AlertDialog alertDialog;**/
         //detalleHistorialDialog.setCancelable(false);
 
-        builder.setView(viewx);
-        builder.setTitle("Registro de Usuario");
+      //  builder.setView(viewx);
+        //builder.setTitle("Registro de Usuario");
        // builder.setCancelable(false);
-        name_text=(EditText)viewx.findViewById(R.id.name_user);
-        mail_text=(EditText)viewx.findViewById(R.id.mail_user);
-        password_text=(EditText)viewx.findViewById(R.id.password_user);
-        cellphone_text=(EditText)viewx.findViewById(R.id.cellphone_user);
+        name_text=(EditText)dialog.findViewById(R.id.name_user);
+        mail_text=(EditText)dialog.findViewById(R.id.mail_user);
+        password_text=(EditText)dialog.findViewById(R.id.password_user);
+        cellphone_text=(EditText)dialog.findViewById(R.id.cellphone_user);
 
-        Button register_button = (Button) viewx.findViewById(R.id.button_register_user);
+        Button register_button = (Button) dialog.findViewById(R.id.button_register_user);
 
 
         name_text.addTextChangedListener(new TextWatcher() {
@@ -328,14 +340,19 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             }
         });*/
         //  Toast.makeText( this.getApplicationContext(), "id: ", Toast.LENGTH_SHORT).show();
-        alertDialog = builder.create();
-        alertDialog.show();
+        /**alertDialog = builder.create();
+        alertDialog.show();**/
+
+        dialog.show();
+        dialog.getWindow().setAttributes(lp);
         register_button.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(register_user()){
                     addUserFire( mail_text.getText().toString().trim(),password_text.getText().toString().trim());
-                    alertDialog.cancel();
+                    //alertDialog.cancel();
+                    dialog.dismiss();
+
                 }
             }
         });
@@ -345,44 +362,44 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         if(name_text.getText().toString().trim().equals("")){
             //Log.d("cordenadaxxxx", "vacio");
             Drawable ic_right_name = getResources().getDrawable(R.drawable.ic_baseline_error_24px);
-            Drawable is_left_name = getResources().getDrawable(R.drawable.ic_person_outline_black_24dp);
+            Drawable is_left_name = getResources().getDrawable(R.drawable.ic_athlete);
             name_text.setCompoundDrawablesWithIntrinsicBounds( is_left_name, null,ic_right_name, null );
             valido=false;
         }else{
-            Drawable is_left_name = getResources().getDrawable(R.drawable.ic_person_outline_black_24dp);
+            Drawable is_left_name = getResources().getDrawable(R.drawable.ic_athlete);
             name_text.setCompoundDrawablesWithIntrinsicBounds( is_left_name, null,null, null );
         }
         //mail
         if(mail_text.getText().toString().trim().equals("")){
             valido=false;
             Drawable ic_right_name = getResources().getDrawable(R.drawable.ic_baseline_error_24px);
-            Drawable is_left_name = getResources().getDrawable(R.drawable.ic_baseline_mail_outline_24px);
+            Drawable is_left_name = getResources().getDrawable(R.drawable.ic_mail);
             mail_text.setCompoundDrawablesWithIntrinsicBounds( is_left_name, null,ic_right_name, null );
 
         }else{
-            Drawable is_left_name = getResources().getDrawable(R.drawable.ic_baseline_mail_outline_24px);
+            Drawable is_left_name = getResources().getDrawable(R.drawable.ic_mail);
             mail_text.setCompoundDrawablesWithIntrinsicBounds( is_left_name, null,null, null );
         }
         //clave
         if(password_text.getText().toString().trim().equals("")||password_text.getText().toString().length()<6){
             valido=false;
             Drawable ic_right_name = getResources().getDrawable(R.drawable.ic_baseline_error_24px);
-            Drawable is_left_name = getResources().getDrawable(R.drawable.ic_baseline_lock_24px);
+            Drawable is_left_name = getResources().getDrawable(R.drawable.ic_padlock);
             password_text.setCompoundDrawablesWithIntrinsicBounds( is_left_name, null,ic_right_name, null );
 
         }else{
-            Drawable is_left_name = getResources().getDrawable(R.drawable.ic_baseline_lock_24px);
+            Drawable is_left_name = getResources().getDrawable(R.drawable.ic_padlock);
             password_text.setCompoundDrawablesWithIntrinsicBounds( is_left_name, null,null, null );
         }
         //celular
         if(cellphone_text.getText().toString().trim().equals("")){
             valido=false;
             Drawable ic_right_name = getResources().getDrawable(R.drawable.ic_baseline_error_24px);
-            Drawable is_left_name = getResources().getDrawable(R.drawable.ic_baseline_phone_24px);
+            Drawable is_left_name = getResources().getDrawable(R.drawable.ic_phone_call);
             cellphone_text.setCompoundDrawablesWithIntrinsicBounds( is_left_name, null,ic_right_name, null );
 
         }else{
-            Drawable is_left_name = getResources().getDrawable(R.drawable.ic_baseline_phone_24px);
+            Drawable is_left_name = getResources().getDrawable(R.drawable.ic_phone_call);
             cellphone_text.setCompoundDrawablesWithIntrinsicBounds( is_left_name, null,null, null );
         }
         return valido;
